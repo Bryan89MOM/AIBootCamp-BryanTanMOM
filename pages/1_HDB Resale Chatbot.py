@@ -9,12 +9,12 @@ st.write("""
 """)
 
 # Set up your OpenAI API key
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # Function to generate the chatbot response
 def generate_response(query):
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4",  # Ensure this is a valid model for your API key
             messages=[
                 {"role": "system", "content": "You are an HDB expert assistant."},
@@ -24,7 +24,7 @@ def generate_response(query):
             n=1,
             temperature=0.7,
         )
-        return response.choices[0].message['content'].strip()
+        return response.choices[0].message.content
     except Exception as e:
         return f"Error: {str(e)}"
 
