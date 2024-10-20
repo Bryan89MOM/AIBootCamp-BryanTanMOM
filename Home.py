@@ -2,7 +2,7 @@ import streamlit as st
 
 # Streamlit home page setup
 st.set_page_config(
-    page_title="Welcome to the HDB Resale Guru",
+    page_title="Test Welcome to the HDB Resale Guru",
     page_icon=":house:",
     layout="centered",
     initial_sidebar_state="expanded",
