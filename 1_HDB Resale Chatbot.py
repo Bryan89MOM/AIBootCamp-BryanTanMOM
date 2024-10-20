@@ -1,5 +1,5 @@
 import streamlit as st
-from openai import OpenAI
+import openai
 import json
 import os
 from dotenv import load_dotenv
@@ -19,7 +19,7 @@ st.write("""
 """)
 
 # Set up your OpenAI API key
-client = OpenAI(
+client = openai(
     api_key=st.secrets["OPENAI_API_KEY"],
 )
 
