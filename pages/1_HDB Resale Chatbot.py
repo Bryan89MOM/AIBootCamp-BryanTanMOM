@@ -15,7 +15,7 @@ openai.api_key = st.secrets["OPENAI_API_KEY"]
 def generate_response(query):
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4",  # Change the model to a valid one
+            model="gpt-4",  # Ensure this is a valid model for your API key
             messages=[
                 {"role": "system", "content": "You are an HDB expert assistant."},
                 {"role": "user", "content": query}
