@@ -1,15 +1,5 @@
 import streamlit as st
-from openai import OpenAI
-import json
-import os
-from dotenv import load_dotenv
-
-# Load the environment variables from the .env file
-load_dotenv()
-
-# Load the scraped data
-with open('data/data.json', 'r') as fp:
-    data = json.load(fp)
+import openai
 
 # Streamlit UI
 st.title("HDB Resale Chatbot 🤖")
@@ -19,15 +9,13 @@ st.write("""
 """)
 
 # Set up your OpenAI API key
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY"),
-)
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 # Function to generate the chatbot response
 def generate_response(query):
     try:
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
+        response = openai.ChatCompletion.create(
+            model="gpt-4",  # Change the model to a valid one
             messages=[
                 {"role": "system", "content": "You are an HDB expert assistant."},
                 {"role": "user", "content": query}
@@ -36,7 +24,7 @@ def generate_response(query):
             n=1,
             temperature=0.7,
         )
-        return response.choices[0].message.content.strip()
+        return response.choices[0].message['content'].strip()
     except Exception as e:
         return f"Error: {str(e)}"
 
@@ -50,5 +38,3 @@ if st.button("Get Answer"):
             st.write(response)
     else:
         st.warning("Please enter a question.")
-
-
