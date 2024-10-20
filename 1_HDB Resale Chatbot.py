@@ -1,11 +1,7 @@
 import streamlit as st
-import openai
+from openai import OpenAI
 import json
 import os
-from dotenv import load_dotenv
-
-# Load the environment variables from the .env file
-load_dotenv()
 
 # Load the scraped data
 with open('data/data.json', 'r') as fp:
@@ -19,7 +15,7 @@ st.write("""
 """)
 
 # Set up your OpenAI API key
-client = openai(
+client = OpenAI(
     api_key=st.secrets["OPENAI_API_KEY"],
 )
 
