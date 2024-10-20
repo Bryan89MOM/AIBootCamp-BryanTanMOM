@@ -25,7 +25,7 @@ st.markdown(
 
     ## How to Navigate
     - **Use the sidebar** to access different sections:
-        - **Chatbot**: Ask questions about HDB resale and get answers powered by OpenAI.
+        - **Hello Chatbot**: Ask questions about HDB resale and get answers powered by OpenAI.
         - **Resale Market Analysis Tool**: Get insights on past transactions.
         - **About Us**: Project scope, objectives, data sources, and features.
         - **Methodology**: Comprehensive explanation of the data flows and implementation details
