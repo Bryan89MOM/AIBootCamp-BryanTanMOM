@@ -1,5 +1,6 @@
 import streamlit as st
 import openai
+import hmac
 
 # Streamlit UI
 st.title("HDB Resale Chatbot 🤖")
@@ -8,6 +9,35 @@ st.write("""
     Hello! I am your assistant. If you have any queries about buying a resale flat, feel free to ask me!
 """)
 
+# Function to check password (same as in main.py)
+def check_password():
+    """Returns `True` if the user had the correct password."""
+    def password_entered():
+        """Checks whether a password entered by the user is correct."""
+        if hmac.compare_digest(st.session_state["password"], st.secrets["password"]):
+            st.session_state["password_correct"] = True
+            del st.session_state["password"]  # Don't store the password.
+        else:
+            st.session_state["password_correct"] = False
+            
+    # Return True if the password is validated.
+    if st.session_state.get("password_correct", False):
+        return True
+    
+    # Show input for password.
+    st.text_input(
+        "Password", type="password", on_change=password_entered, key="password"
+    )
+    
+    if "password_correct" in st.session_state:
+        st.error("😕 Password incorrect")
+        
+    return False
+
+# Check password for this page
+if not check_password():
+    st.stop()  # Stop if password check fails
+
 # Set up your OpenAI API key
 client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
@@ -15,7 +45,7 @@ client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 def generate_response(query):
     try:
         response = client.chat.completions.create(
-            model="gpt-4",  # Ensure this is a valid model for your API key
+            model="gpt-4o-mini",  # Ensure this is a valid model for your API key
             messages=[
                 {"role": "system", "content": "You are an HDB expert assistant."},
                 {"role": "user", "content": query}
