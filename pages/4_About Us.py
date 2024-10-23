@@ -64,19 +64,8 @@ st.markdown(
 st.subheader("Data Sources")
 st.markdown(
     """
-    To ensure accuracy and relevance, our application utilizes the following reliable data sources:
     - **HDB Transaction Data**: Resale prices and property details are sourced from HDB's publicly available datasets, accessible at [data.gov.sg](https://data.gov.sg/).
-    - **Official HDB Information**: We scrape information regarding the resale HDB process, grants, and policies from the official HDB website. The following URLs were scraped as of **October 18, 2024**:
-    
-    - [Buying Procedure for Resale Flats](https://www.hdb.gov.sg/residential/buying-a-flat/buying-procedure-for-resale-flats)
-    - [Planning, Sourcing, and Contracting](https://www.hdb.gov.sg/residential/buying-a-flat/buying-procedure-for-resale-flats/plan-source-and-contract)
-    - [Overview of Buying Procedure](https://www.hdb.gov.sg/residential/buying-a-flat/buying-procedure-for-resale-flats/overview)
-    - [Planning Considerations](https://www.hdb.gov.sg/residential/buying-a-flat/buying-procedure-for-resale-flats/plan-source-and-contract/planning-considerations)
-    - [Managing the Flat Purchase](https://www.hdb.gov.sg/residential/buying-a-flat/buying-procedure-for-resale-flats/plan-source-and-contract/planning-considerations/managing-the-flat-purchase)
-    - [EIP and SPR Quota](https://www.hdb.gov.sg/residential/buying-a-flat/buying-procedure-for-resale-flats/plan-source-and-contract/planning-considerations/eip-spr-quota)
-    - [Mode of Financing](https://www.hdb.gov.sg/residential/buying-a-flat/buying-procedure-for-resale-flats/plan-source-and-contract/mode-of-financing)
-    - [Option to Purchase](https://www.hdb.gov.sg/residential/buying-a-flat/buying-procedure-for-resale-flats/plan-source-and-contract/option-to-purchase)
-    - [Request for Value](https://www.hdb.gov.sg/residential/buying-a-flat/buying-procedure-for-resale-flats/plan-source-and-contract/request-for-value)
+    - **Publicly available HDB Information**
     """
 )
 
